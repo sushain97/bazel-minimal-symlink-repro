@@ -1,0 +1,13 @@
+load(":rules.bzl", "make_symlink")
+
+genrule(
+    name = "foo",
+    outs = ["actual-file"],
+    srcs = [],
+    cmd = "date > $@"
+)
+
+make_symlink(
+    name = "foo-symlink",
+    src = ":actual-file",
+)
